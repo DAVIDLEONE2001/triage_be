@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll()
 				//tutti gli utenti autenticati possono richiedere le info
 				.antMatchers("/api/utente/userInfo").authenticated()
-				.antMatchers("/api/utente/**","/api/triage/**").hasRole("ADMIN")
-				.antMatchers("/**").hasAnyRole("ADMIN", "SUB_OPERATOR")
+				.antMatchers("/api/utente/**","/api/triage/admin/**").hasRole("ADMIN")
+				.antMatchers("/**","/api/triage/**").hasAnyRole("ADMIN", "SUB_OPERATOR")
 				// .antMatchers("/anonymous*").anonymous()
 				.anyRequest().authenticated()
 				.and()
